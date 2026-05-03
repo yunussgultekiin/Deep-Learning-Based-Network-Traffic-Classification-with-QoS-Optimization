@@ -1,0 +1,37 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.conda/
+
+# Packaging/build
+build/
+dist/
+*.egg-info/
+
+# Test/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checkers/linters
+.mypy_cache/
+.pyre/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

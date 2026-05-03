@@ -1,0 +1,41 @@
+! ============================================================
+! AUTO-GENERATED QoS CONFIG – Cisco Packet Tracer (2911)
+! Paste this block into Router CLI (enable mode)
+! ============================================================
+enable
+configure terminal
+no ip domain-lookup
+class-map match-any CLASS-VOIP
+ match ip dscp ef
+class-map match-any CLASS-STREAMING
+ match ip dscp af41
+class-map match-any CLASS-BROWSING
+ match ip dscp af21
+class-map match-any CLASS-CHAT
+ match ip dscp af11
+class-map match-any CLASS-MAIL
+ match ip dscp cs1
+class-map match-any CLASS-FT
+ match ip dscp default
+class-map match-any CLASS-P2P
+ match ip dscp default
+policy-map QOS-OUT
+ class CLASS-VOIP
+  priority percent 20
+ class CLASS-STREAMING
+  bandwidth percent 20
+ class CLASS-BROWSING
+  bandwidth percent 15
+ class CLASS-CHAT
+  bandwidth percent 5
+ class CLASS-MAIL
+  bandwidth percent 5
+ class CLASS-FT
+  bandwidth percent 5
+ class CLASS-P2P
+  bandwidth percent 5
+ class class-default
+  fair-queue
+interface GigabitEthernet0/0
+ service-policy output QOS-OUT
+end

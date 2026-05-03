@@ -1,0 +1,33 @@
+class-map match-any CLASS-VOIP
+ match dscp ef
+class-map match-any CLASS-STREAMING
+ match dscp af41
+class-map match-any CLASS-BROWSING
+ match dscp af21
+class-map match-any CLASS-CHAT
+ match dscp af11
+class-map match-any CLASS-MAIL
+ match dscp cs1
+class-map match-any CLASS-FT
+ match dscp default
+class-map match-any CLASS-P2P
+ match dscp default
+policy-map QOS-OUT
+ class CLASS-VOIP
+  priority percent 20
+ class CLASS-STREAMING
+  bandwidth percent 20
+ class CLASS-BROWSING
+  bandwidth percent 15
+ class CLASS-CHAT
+  bandwidth percent 5
+ class CLASS-MAIL
+  bandwidth percent 5
+ class CLASS-FT
+  bandwidth percent 5
+ class CLASS-P2P
+  bandwidth percent 5
+ class class-default
+  fair-queue
+interface GigabitEthernet0/0
+ service-policy output QOS-OUT
